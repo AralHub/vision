@@ -1,15 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router"
 import { Card, Row, Col, Statistic, Table, Avatar, Tag, Space, Typography, Select, theme } from "antd"
-import { 
-	UserOutlined, 
-	DollarOutlined, 
-	TeamOutlined, 
+import {
+	UserOutlined,
+	DollarOutlined,
+	TeamOutlined,
 	ClockCircleOutlined,
 	ArrowUpOutlined,
 	ArrowDownOutlined
 } from "@ant-design/icons"
 import Chart from "react-apexcharts"
 import { useMemo } from "react"
+import { formatPrice } from "src/shared/utils"
 
 export const Route = createFileRoute("/_layout/fitness/$fitnessId/")({
 	component: RouteComponent,
@@ -134,7 +135,7 @@ function RouteComponent() {
 			width: 3,
 		},
 		fill: {
-			type: "gradient" as const,
+			// type: "gradient" as const,
 			gradient: {
 				shadeIntensity: 1,
 				opacityFrom: 0.7,
@@ -234,9 +235,9 @@ function RouteComponent() {
 						<Space style={{ width: "100%", justifyContent: "space-between" }}>
 							<div>
 								<Statistic
-									title={"Месячный доход"}
+									title={"Сегодняшний доход"}
 									value={statsData.monthlyRevenue}
-									formatter={(value) => `${Number(value) * 1000} UZS`}
+									formatter={(value) => `${formatPrice(Number(value) * 1000)} UZS`}
 								/>
 								<Typography.Text
 									type={"success"}
@@ -260,7 +261,6 @@ function RouteComponent() {
 								<Statistic
 									title={"Активные участники"}
 									value={statsData.activeMembers}
-									prefix={<TeamOutlined />}
 								/>
 								<Typography.Text
 									type={"success"}
@@ -285,7 +285,6 @@ function RouteComponent() {
 									title={"Средняя длительность визита"}
 									value={statsData.avgVisitDuration}
 									suffix={"мин"}
-									prefix={<ClockCircleOutlined />}
 								/>
 								<Typography.Text
 									type={"danger"}
@@ -297,7 +296,7 @@ function RouteComponent() {
 							<Avatar
 								size={48}
 								icon={<ClockCircleOutlined />}
-								style={{ backgroundColor:  token.orange }}
+								style={{ backgroundColor: token.orange }}
 							/>
 						</Space>
 					</Card>
@@ -349,8 +348,11 @@ function RouteComponent() {
 			{/* Таблица и топ участники */}
 			<Row gutter={[16, 16]}>
 				<Col xs={24} lg={12}>
-					<Card title={"Недавние чекины"}>
+					<Card title={"Недавние посещения"} styles={{ body: { padding: 0 } }}>
 						<Table
+							style={{
+								borderRadius: 0,
+							}}
 							columns={checkinsColumns}
 							dataSource={recentCheckins}
 							pagination={false}

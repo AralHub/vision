@@ -1,3 +1,4 @@
+import { useNavigate, useParams } from "@tanstack/react-router"
 import { ConfigProvider, Menu, theme } from "antd"
 import { type FC, useMemo } from "react"
 import { menuData } from "src/shared/data"
@@ -7,6 +8,10 @@ import { SidebarContainer } from "./sidebar.container.tsx"
 const SidebarLayout: FC = () => {
 	const { token } = theme.useToken()
 	const { isDark } = useThemeStore()
+	const navigate = useNavigate()
+	const { fitnessId, restaurantId } = useParams({
+		strict: false
+	})
 	const collapsed = useMenuStore((state) => state.collapsed)
 
 	const menuItems = useMemo(() => {
@@ -39,6 +44,20 @@ const SidebarLayout: FC = () => {
 						inlineCollapsed={collapsed}
 						style={{
 							padding: `${token.paddingSM}px ${collapsed ? 0 : (token.padding - 4)}px`,
+						}}
+						onSelect={({ key }) => {
+							if (restaurantId) {
+								navigate({
+									to: `/restaurants/${restaurantId}${key}`,
+								})
+								return
+							}
+							if (fitnessId) {
+								navigate({
+									to: `/fitness/${fitnessId}${key}`,
+								})
+								return
+							}
 						}}
 						styles={() => ({
 							itemTitle: {

@@ -16,6 +16,10 @@ import { Route as MainLayoutIndexRouteImport } from "./pages/_main-layout/index"
 import { Route as AuthLoginRouteImport } from "./pages/_auth/login"
 import { Route as LayoutRestaurantsRestaurantIdIndexRouteImport } from "./pages/_layout/restaurants.$restaurantId/index"
 import { Route as LayoutFitnessFitnessIdIndexRouteImport } from "./pages/_layout/fitness.$fitnessId/index"
+import { Route as LayoutRestaurantsRestaurantIdEmployeesRouteImport } from "./pages/_layout/restaurants.$restaurantId/employees"
+import { Route as LayoutRestaurantsRestaurantIdCalendarRouteImport } from "./pages/_layout/restaurants.$restaurantId/calendar"
+import { Route as LayoutFitnessFitnessIdEmployeesRouteImport } from "./pages/_layout/fitness.$fitnessId/employees"
+import { Route as LayoutFitnessFitnessIdCalendarRouteImport } from "./pages/_layout/fitness.$fitnessId/calendar"
 
 const MainLayoutRoute = MainLayoutRouteImport.update({
   id: "/_main-layout",
@@ -51,16 +55,48 @@ const LayoutFitnessFitnessIdIndexRoute =
     path: "/fitness/$fitnessId/",
     getParentRoute: () => LayoutRoute,
   } as any)
+const LayoutRestaurantsRestaurantIdEmployeesRoute =
+  LayoutRestaurantsRestaurantIdEmployeesRouteImport.update({
+    id: "/restaurants/$restaurantId/employees",
+    path: "/restaurants/$restaurantId/employees",
+    getParentRoute: () => LayoutRoute,
+  } as any)
+const LayoutRestaurantsRestaurantIdCalendarRoute =
+  LayoutRestaurantsRestaurantIdCalendarRouteImport.update({
+    id: "/restaurants/$restaurantId/calendar",
+    path: "/restaurants/$restaurantId/calendar",
+    getParentRoute: () => LayoutRoute,
+  } as any)
+const LayoutFitnessFitnessIdEmployeesRoute =
+  LayoutFitnessFitnessIdEmployeesRouteImport.update({
+    id: "/fitness/$fitnessId/employees",
+    path: "/fitness/$fitnessId/employees",
+    getParentRoute: () => LayoutRoute,
+  } as any)
+const LayoutFitnessFitnessIdCalendarRoute =
+  LayoutFitnessFitnessIdCalendarRouteImport.update({
+    id: "/fitness/$fitnessId/calendar",
+    path: "/fitness/$fitnessId/calendar",
+    getParentRoute: () => LayoutRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   "/login": typeof AuthLoginRoute
   "/": typeof MainLayoutIndexRoute
+  "/fitness/$fitnessId/calendar": typeof LayoutFitnessFitnessIdCalendarRoute
+  "/fitness/$fitnessId/employees": typeof LayoutFitnessFitnessIdEmployeesRoute
+  "/restaurants/$restaurantId/calendar": typeof LayoutRestaurantsRestaurantIdCalendarRoute
+  "/restaurants/$restaurantId/employees": typeof LayoutRestaurantsRestaurantIdEmployeesRoute
   "/fitness/$fitnessId": typeof LayoutFitnessFitnessIdIndexRoute
   "/restaurants/$restaurantId": typeof LayoutRestaurantsRestaurantIdIndexRoute
 }
 export interface FileRoutesByTo {
   "/login": typeof AuthLoginRoute
   "/": typeof MainLayoutIndexRoute
+  "/fitness/$fitnessId/calendar": typeof LayoutFitnessFitnessIdCalendarRoute
+  "/fitness/$fitnessId/employees": typeof LayoutFitnessFitnessIdEmployeesRoute
+  "/restaurants/$restaurantId/calendar": typeof LayoutRestaurantsRestaurantIdCalendarRoute
+  "/restaurants/$restaurantId/employees": typeof LayoutRestaurantsRestaurantIdEmployeesRoute
   "/fitness/$fitnessId": typeof LayoutFitnessFitnessIdIndexRoute
   "/restaurants/$restaurantId": typeof LayoutRestaurantsRestaurantIdIndexRoute
 }
@@ -71,6 +107,10 @@ export interface FileRoutesById {
   "/_main-layout": typeof MainLayoutRouteWithChildren
   "/_auth/login": typeof AuthLoginRoute
   "/_main-layout/": typeof MainLayoutIndexRoute
+  "/_layout/fitness/$fitnessId/calendar": typeof LayoutFitnessFitnessIdCalendarRoute
+  "/_layout/fitness/$fitnessId/employees": typeof LayoutFitnessFitnessIdEmployeesRoute
+  "/_layout/restaurants/$restaurantId/calendar": typeof LayoutRestaurantsRestaurantIdCalendarRoute
+  "/_layout/restaurants/$restaurantId/employees": typeof LayoutRestaurantsRestaurantIdEmployeesRoute
   "/_layout/fitness/$fitnessId/": typeof LayoutFitnessFitnessIdIndexRoute
   "/_layout/restaurants/$restaurantId/": typeof LayoutRestaurantsRestaurantIdIndexRoute
 }
@@ -79,10 +119,22 @@ export interface FileRouteTypes {
   fullPaths:
     | "/login"
     | "/"
+    | "/fitness/$fitnessId/calendar"
+    | "/fitness/$fitnessId/employees"
+    | "/restaurants/$restaurantId/calendar"
+    | "/restaurants/$restaurantId/employees"
     | "/fitness/$fitnessId"
     | "/restaurants/$restaurantId"
   fileRoutesByTo: FileRoutesByTo
-  to: "/login" | "/" | "/fitness/$fitnessId" | "/restaurants/$restaurantId"
+  to:
+    | "/login"
+    | "/"
+    | "/fitness/$fitnessId/calendar"
+    | "/fitness/$fitnessId/employees"
+    | "/restaurants/$restaurantId/calendar"
+    | "/restaurants/$restaurantId/employees"
+    | "/fitness/$fitnessId"
+    | "/restaurants/$restaurantId"
   id:
     | "__root__"
     | "/_auth"
@@ -90,6 +142,10 @@ export interface FileRouteTypes {
     | "/_main-layout"
     | "/_auth/login"
     | "/_main-layout/"
+    | "/_layout/fitness/$fitnessId/calendar"
+    | "/_layout/fitness/$fitnessId/employees"
+    | "/_layout/restaurants/$restaurantId/calendar"
+    | "/_layout/restaurants/$restaurantId/employees"
     | "/_layout/fitness/$fitnessId/"
     | "/_layout/restaurants/$restaurantId/"
   fileRoutesById: FileRoutesById
@@ -151,6 +207,34 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof LayoutFitnessFitnessIdIndexRouteImport
       parentRoute: typeof LayoutRoute
     }
+    "/_layout/restaurants/$restaurantId/employees": {
+      id: "/_layout/restaurants/$restaurantId/employees"
+      path: "/restaurants/$restaurantId/employees"
+      fullPath: "/restaurants/$restaurantId/employees"
+      preLoaderRoute: typeof LayoutRestaurantsRestaurantIdEmployeesRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    "/_layout/restaurants/$restaurantId/calendar": {
+      id: "/_layout/restaurants/$restaurantId/calendar"
+      path: "/restaurants/$restaurantId/calendar"
+      fullPath: "/restaurants/$restaurantId/calendar"
+      preLoaderRoute: typeof LayoutRestaurantsRestaurantIdCalendarRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    "/_layout/fitness/$fitnessId/employees": {
+      id: "/_layout/fitness/$fitnessId/employees"
+      path: "/fitness/$fitnessId/employees"
+      fullPath: "/fitness/$fitnessId/employees"
+      preLoaderRoute: typeof LayoutFitnessFitnessIdEmployeesRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    "/_layout/fitness/$fitnessId/calendar": {
+      id: "/_layout/fitness/$fitnessId/calendar"
+      path: "/fitness/$fitnessId/calendar"
+      fullPath: "/fitness/$fitnessId/calendar"
+      preLoaderRoute: typeof LayoutFitnessFitnessIdCalendarRouteImport
+      parentRoute: typeof LayoutRoute
+    }
   }
 }
 
@@ -165,11 +249,21 @@ const AuthRouteChildren: AuthRouteChildren = {
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 
 interface LayoutRouteChildren {
+  LayoutFitnessFitnessIdCalendarRoute: typeof LayoutFitnessFitnessIdCalendarRoute
+  LayoutFitnessFitnessIdEmployeesRoute: typeof LayoutFitnessFitnessIdEmployeesRoute
+  LayoutRestaurantsRestaurantIdCalendarRoute: typeof LayoutRestaurantsRestaurantIdCalendarRoute
+  LayoutRestaurantsRestaurantIdEmployeesRoute: typeof LayoutRestaurantsRestaurantIdEmployeesRoute
   LayoutFitnessFitnessIdIndexRoute: typeof LayoutFitnessFitnessIdIndexRoute
   LayoutRestaurantsRestaurantIdIndexRoute: typeof LayoutRestaurantsRestaurantIdIndexRoute
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
+  LayoutFitnessFitnessIdCalendarRoute: LayoutFitnessFitnessIdCalendarRoute,
+  LayoutFitnessFitnessIdEmployeesRoute: LayoutFitnessFitnessIdEmployeesRoute,
+  LayoutRestaurantsRestaurantIdCalendarRoute:
+    LayoutRestaurantsRestaurantIdCalendarRoute,
+  LayoutRestaurantsRestaurantIdEmployeesRoute:
+    LayoutRestaurantsRestaurantIdEmployeesRoute,
   LayoutFitnessFitnessIdIndexRoute: LayoutFitnessFitnessIdIndexRoute,
   LayoutRestaurantsRestaurantIdIndexRoute:
     LayoutRestaurantsRestaurantIdIndexRoute,

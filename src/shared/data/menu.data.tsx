@@ -1,4 +1,4 @@
-import { FileOutlined, HomeOutlined } from "@ant-design/icons"
+import { CalendarOutlined, HomeOutlined, TeamOutlined } from "@ant-design/icons"
 import type { MenuProps } from "antd"
 
 export type MenuItem = Required<MenuProps>["items"][number]
@@ -12,7 +12,7 @@ export const menuData: MenuItem[] = [
 	{
 		key: "/",
 		icon: <HomeOutlined />,
-		label: "Home",
+		label: "Главная",
 	},
 	{
 		key: "Pages",
@@ -20,8 +20,13 @@ export const menuData: MenuItem[] = [
 		label: "Pages",
 	},
 	{
-		key: "/vacancies",
-		icon: <FileOutlined />,
-		label: "Vacancies",
+		key: "/calendar",
+		icon: <CalendarOutlined />,
+		label: "Календарь",
+	},
+	{
+		key: "/employees",
+		icon: <TeamOutlined />,
+		label: "Работники",
 	},
 ]
