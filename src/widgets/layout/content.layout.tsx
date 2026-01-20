@@ -6,12 +6,19 @@ const ContentLayout: FC<PropsWithChildren> = ({ children }) => {
 
 	return (
 		<>
-			<Layout.Content>
+			<Layout.Content
+				style={{
+					display: "flex",
+					flexDirection: "column",
+				}}
+			>
 				<Flex
+					flex={1}
 					vertical={true}
 					gap={token.paddingLG}
 					style={{
 						padding: token.paddingLG,
+					
 					}}
 				>
 					{children}

@@ -16,7 +16,7 @@ const FooterLayout: FC = () => {
 				}}
 			>
 				<Typography.Paragraph>
-					© {new Date().getFullYear()} MyVacant. All Rights Reserved.
+					© {new Date().getFullYear()} Vision. All Rights Reserved.
 				</Typography.Paragraph>
 				<Typography.Paragraph>
 					Made by <span style={{ color: token.colorPrimary }}>Aralhub</span>
