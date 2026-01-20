@@ -6,7 +6,7 @@ import {
 	SearchOutlined,
 	UserOutlined,
 } from "@ant-design/icons"
-import { Link } from "@tanstack/react-router"
+import { Link, useParams } from "@tanstack/react-router"
 import {
 	Avatar,
 	Button,
@@ -29,14 +29,20 @@ interface HeaderLayoutProps {
 	main?: boolean
 }
 
-const logo = (
-	<Link to={"/"}>
-		<Logo align={"center"} />
-	</Link>
-)
-
 const HeaderLayout: FC<HeaderLayoutProps> = ({ main }) => {
 	const { token } = theme.useToken()
+	const { restaurantId, fitnessId } = useParams({
+		strict: false,
+	})
+
+	const logo = (
+		<Link to={"/"}>
+			<Logo
+				align={"center"}
+				variant={restaurantId ? "restaurant" : fitnessId ? "fitness" : "default"}
+			/>
+		</Link>
+	)
 
 	return (
 		<>

@@ -108,7 +108,7 @@ const fitnessCenters = [
 ]
 
 function RouteComponent() {
-	const [tab, setTab] = useState("")
+	const [tab, setTab] = useState("1")
 
 	return (
 		<>
