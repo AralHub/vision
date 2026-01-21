@@ -26,7 +26,7 @@ import { useMemo, useState } from "react"
 import Chart from "react-apexcharts"
 import { useThemeStore } from "src/shared/store"
 import { formatPrice } from "src/shared/utils"
-import { Map } from "src/widgets/map"
+import { Map, MapToy } from "src/widgets/map"
 
 export const Route = createFileRoute("/_layout/restaurants/$restaurantId/")({
 	component: RouteComponent,
@@ -559,24 +559,37 @@ function RouteComponent() {
 
 			<Card
 				title={"Карта ресторана"}
-				extra={
-					<Select
-						placeholder={"Выберите этаж"}
-						style={{ width: 150 }}
-					>
-						<Select.Option value={"1"}>{"Этаж 1"}</Select.Option>
-						<Select.Option value={"2"}>{"Этаж 2"}</Select.Option>
-						<Select.Option value={"3"}>{"Этаж 3"}</Select.Option>
-					</Select>
-				}
-			>
-				<Flex
-					justify={"center"}
-					style={{ position: "relative", width: "100%", height: "auto", overflow: "auto" }}
-				>
-					<Map />
-				</Flex>
-			</Card>
+				tabList={[
+					{
+						key: "1",
+						label: "Этаж 1",
+						children: (
+							<>
+								<Flex
+									justify={"center"}
+									style={{ position: "relative", width: "100%", height: "auto", overflow: "auto" }}
+								>
+									<MapToy />
+								</Flex>
+							</>
+						),
+					},
+					{
+						key: "2",
+						label: "Этаж 2",
+						children: (
+							<>
+								<Flex
+									justify={"center"}
+									style={{ position: "relative", width: "100%", height: "auto", overflow: "auto" }}
+								>
+									<Map />
+								</Flex>
+							</>
+						),
+					},
+				]}
+			></Card>
 		</>
 	)
 }
