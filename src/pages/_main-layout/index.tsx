@@ -18,7 +18,7 @@ export const Route = createFileRoute("/_main-layout/")({
 const restaurants = [
 	{
 		id: 1,
-		name: "Ресторан 'Восток'",
+		name: "Тойхана 'Восток'",
 		location: "г. Алматы, ул. Абая 150",
 		status: "active",
 		totalTables: 25,
@@ -27,7 +27,7 @@ const restaurants = [
 	},
 	{
 		id: 2,
-		name: "Кафе 'Нур'",
+		name: "Тойхана 'Нур'",
 		location: "г. Алматы, пр. Абая 50",
 		status: "inactive",
 		totalTables: 15,
@@ -36,7 +36,7 @@ const restaurants = [
 	},
 	{
 		id: 3,
-		name: "Ресторан 'Астана'",
+		name: "Тойхана 'Астана'",
 		location: "г. Астана, ул. Кабанбай батыра 10",
 		status: "active",
 		totalTables: 30,
@@ -45,7 +45,7 @@ const restaurants = [
 	},
 	{
 		id: 4,
-		name: "Кафе 'Сырла'",
+		name: "Тойхана 'Сырла'",
 		location: "г. Алматы, ул. Сатпаева 30",
 		status: "active",
 		totalTables: 20,
@@ -54,7 +54,7 @@ const restaurants = [
 	},
 	{
 		id: 5,
-		name: "Ресторан 'Алатау'",
+		name: "Тойхана 'Алатау'",
 		location: "г. Алматы, ул. Достык 200",
 		status: "inactive",
 		totalTables: 18,
@@ -161,7 +161,7 @@ function RouteComponent() {
 					style={{
 						position: "absolute",
 						bottom: -24,
-						right: -24,
+						right: 0,
 						width: "25%",
 						height: "auto",
 						objectFit: "contain",

@@ -11,6 +11,9 @@ const AntdProvider: FC<PropsWithChildren> = ({ children }) => {
 		if (isDark)
 			return {
 				colorPrimary: "#5F63F2",
+				colorBgContainer: "#272b41",
+				colorBgElevated: "#272b41",
+				colorBgLayout: "#171926"
 			} as AliasToken
 
 		return {
@@ -30,7 +33,7 @@ const AntdProvider: FC<PropsWithChildren> = ({ children }) => {
 					},
 					components: {
 						Menu: {
-							itemColor: isDark ? token.colorText : "rgb(127, 128, 130)",
+							itemColor: isDark ? undefined : "rgb(127, 128, 130)",
 							collapsedIconSize: 16,
 						}
 					}
