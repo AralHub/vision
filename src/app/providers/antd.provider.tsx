@@ -2,6 +2,7 @@ import { ConfigProvider, theme } from "antd"
 import type { AliasToken } from "antd/es/theme/interface"
 import { type FC, type PropsWithChildren, useMemo } from "react"
 import { useThemeStore } from "src/shared/store"
+import localeRU from "antd/locale/ru_RU"
 
 const AntdProvider: FC<PropsWithChildren> = ({ children }) => {
 	const { token } = theme.useToken()
@@ -13,7 +14,7 @@ const AntdProvider: FC<PropsWithChildren> = ({ children }) => {
 				colorPrimary: "#5F63F2",
 				colorBgContainer: "#272b41",
 				colorBgElevated: "#272b41",
-				colorBgLayout: "#171926"
+				colorBgLayout: "#171926",
 			} as AliasToken
 
 		return {
@@ -25,6 +26,7 @@ const AntdProvider: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<>
 			<ConfigProvider
+				locale={localeRU}
 				theme={{
 					algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm,
 					token: {
@@ -35,8 +37,8 @@ const AntdProvider: FC<PropsWithChildren> = ({ children }) => {
 						Menu: {
 							itemColor: isDark ? undefined : "rgb(127, 128, 130)",
 							collapsedIconSize: 16,
-						}
-					}
+						},
+					},
 				}}
 				typography={{
 					style: {

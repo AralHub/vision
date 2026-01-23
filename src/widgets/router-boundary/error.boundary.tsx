@@ -12,8 +12,8 @@ const ErrorBoundary: FC<ErrorComponentProps> = ({ error }) => {
 			<Result
 				icon={
 					<Image
-						src={"/assets/404.svg"}
-						fallback={"/public/assets/404.svg"}
+						src={"/assets/500.svg"}
+						fallback={"/public/assets/500.svg"}
 						width={454}
 						preview={false}
 						height={454}
